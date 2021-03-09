@@ -21,6 +21,22 @@ h1 {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 18px;
+  text-align: center;
+}
+
+#answer-button-container {
+  margin-top: 20px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.answer-buttons {
+  display: none;
+  padding: 7px 7px;
+  background-color: blue;
 }
 
 button {

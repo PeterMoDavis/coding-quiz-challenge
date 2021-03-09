@@ -11,15 +11,6 @@ let answerButton3 = document.querySelector("#answer-button-3");
 let answerButton4 = document.querySelector("#answer-button-4");
 let correctIncorrect = document.querySelector("#correct-incorrect");
 
-//changes the question and answer choices
-
-function changeQuestionFunction() {
-  h1.innerText = questionsList[(listNumber += 1)].question;
-  answerButton1.innerText = questionsList[listNumber].answer1;
-  answerButton2.innerText = questionsList[listNumber].answer2;
-  answerButton3.innerText = questionsList[listNumber].answer3;
-  answerButton4.innerText = questionsList[listNumber].answer4;
-}
 //creating question objects
 let qAndA1 = {
   question: "Commonly used data types DO NOT include:",
@@ -65,10 +56,10 @@ let qAndA5 = {
 };
 
 let questionsList = [qAndA1, qAndA2, qAndA3, qAndA4, qAndA5];
-let listNumber = -1;
-let totalScore = 0;
 
+//initial screen button, hides main button and uses the change question function to fill those buttons and h1 with the correct information.  starts timer.
 button.addEventListener("click", () => {
+  //change question function which changes questions as they are chosen.
   changeQuestionFunction();
   p.style.display = "none";
   //hide the main button
@@ -79,7 +70,24 @@ button.addEventListener("click", () => {
     answerButton.style.display = "block";
   }
 });
-//buttons
+
+//changes the question and answer choices until setting off allDone function to clear the screen for final score.
+let listNumber = -1;
+
+function changeQuestionFunction() {
+  if (listNumber <= 3) {
+    h1.innerText = questionsList[(listNumber += 1)].question;
+    answerButton1.innerText = questionsList[listNumber].answer1;
+    answerButton2.innerText = questionsList[listNumber].answer2;
+    answerButton3.innerText = questionsList[listNumber].answer3;
+    answerButton4.innerText = questionsList[listNumber].answer4;
+  } else {
+    allDone();
+  }
+}
+
+let totalScore = 0;
+//answer buttons
 //button one
 answerButton1.addEventListener("click", () => {
   if (
@@ -164,3 +172,12 @@ answerButton4.addEventListener("click", () => {
     }, 1000);
   }
 });
+//clears questions and buttons and displays final score
+function allDone() {
+  for (let answerButton of answerButtons) {
+    answerButton.style.display = "none";
+
+    correctIncorrect.style.display = "none";
+    h1.innerText = "All Done!";
+  }
+}

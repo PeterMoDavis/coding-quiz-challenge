@@ -57,3 +57,14 @@ button:focus {
 #correct-incorrect {
   margin-top: 20px;
 }
+
+#timer {
+  width: 100px;
+  height: 100px;
+}
+
+aside {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}

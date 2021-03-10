@@ -72,6 +72,19 @@ let listNumber = -1;
 form.style.display = "none";
 //initial screen button, hides main button and uses the change question function to fill those buttons and h1 with the correct information.  starts timer.
 button.addEventListener("click", () => {
+  //start interval right away
+  aside.innerText = "Time " + timeLeft;
+  timeLeft -= 1;
+  //continue interval
+  let stopInterval = setInterval(() => {
+    aside.innerText = "Time " + timeLeft;
+    timeLeft -= 1;
+    //if time runs out run allDone() clear the interval
+    if (timeLeft === 0) {
+      allDone();
+      clearInterval(stopInterval);
+    }
+  }, 1000);
   //change question function which changes questions as they are chosen.
   changeQuestionFunction();
   //hide paragraph and form
@@ -84,17 +97,6 @@ button.addEventListener("click", () => {
     answerButton.style.display = "block";
   }
   //changes the question and answer choices until setting off allDone function to clear the screen for final score.
-
-  //start interval
-  let stopInterval = setInterval(() => {
-    aside.innerText = "Time " + timeLeft;
-    timeLeft -= 1;
-    //if time runs out run allDone() clear the interval
-    if (timeLeft === 0) {
-      allDone();
-      clearInterval(stopInterval);
-    }
-  }, 1000);
 
   function changeQuestionFunction() {
     if (listNumber <= 3) {

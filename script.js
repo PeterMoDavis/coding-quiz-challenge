@@ -229,13 +229,24 @@ button.addEventListener("click", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
   });
+
   input.addEventListener("change", (e) => {
-    console.log(e.target.value);
+    //change displayed view to high scores
     h1.innerText = "High Scores";
     p.style.display = "none";
     form.style.display = "none";
     let li = document.createElement("li");
-    li.innerText = `${e.target.value} - ${timeLeft}`;
+    //get values
+
+    let highScore = {
+      initials: e.target.value,
+      score: timeLeft,
+    };
+
+    localStorage.setItem("highScore", JSON.stringify(highScore));
+    let storedHighScore = JSON.parse(localStorage.getItem("highScore"));
+    console.log(storedHighScore);
+    li.innerText = `${storedHighScore.initials} - ${storedHighScore.score}`;
     ol.appendChild(li);
     console.log(li);
   });

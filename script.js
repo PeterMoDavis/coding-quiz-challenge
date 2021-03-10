@@ -7,6 +7,7 @@ let aside = document.createElement("aside");
 let section = document.querySelector("section");
 let form = document.querySelector("form");
 let input = document.querySelector("input");
+let ol = document.querySelector("ol");
 //timer append
 main.append(aside);
 let timer = document.querySelector("#timer");
@@ -228,9 +229,12 @@ button.addEventListener("click", () => {
   });
   input.addEventListener("change", (e) => {
     console.log(e.target.value);
-
     h1.innerText = "High Scores";
     p.style.display = "none";
     form.style.display = "none";
+    let li = document.createElement("li");
+    li.innerText = `${e.target.value} - ${timeLeft}`;
+    ol.appendChild(li);
+    console.log(li);
   });
 });

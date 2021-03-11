@@ -230,24 +230,31 @@ button.addEventListener("click", () => {
     e.preventDefault();
   });
 
+  let li = document.createElement("li");
   input.addEventListener("change", (e) => {
     //change displayed view to high scores
     h1.innerText = "High Scores";
     p.style.display = "none";
     form.style.display = "none";
-    let li = document.createElement("li");
-    //get values
 
+    //get values
     let highScore = {
       initials: e.target.value,
       score: timeLeft,
     };
+    let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    highScores.push(highScore);
 
-    localStorage.setItem("highScore", JSON.stringify(highScore));
-    let storedHighScore = JSON.parse(localStorage.getItem("highScore"));
-    console.log(storedHighScore);
-    li.innerText = `${storedHighScore.initials} - ${storedHighScore.score}`;
-    ol.appendChild(li);
-    console.log(li);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    let highScoresReversed = highScores.reverse();
+    console.log(highScoresReversed);
+    for (let i = 0; i < highScoresReversed.length; i++) {
+      let li = document.createElement("li");
+      li.innerText = `${i + 1}. ${highScoresReversed[i].initials} - ${
+        highScoresReversed[i].score
+      }`;
+      ol.appendChild(li);
+    }
+    console.log(highScores);
   });
 });

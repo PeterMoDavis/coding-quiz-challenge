@@ -73,6 +73,8 @@ li {
   font-size: 30px;
   text-align: center;
   font-weight: bold;
+  margin: 10px;
+  border-radius: 7px;
 }
 
 #correct-incorrect {

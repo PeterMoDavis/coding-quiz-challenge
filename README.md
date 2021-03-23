@@ -6,6 +6,10 @@ For this project I made a quiz that asks pretty simple questions about web devel
 
 You can link to the quiz here [HERE](https://petermodavis.github.io/coding-quiz-challenge/)
 
+## Technology
+
+JS, CSS, HTML
+
 ## Installation
 
 Simply visit the link provided above and press the red button that's labeled "Start Quiz".
@@ -22,6 +26,10 @@ Enter intials
 See High Score!
 
 ![high score](./assets/images/high-score.png)
+
+## Contact
+
+pmodavis.webdev@gmail.com
 
 ## License
 
